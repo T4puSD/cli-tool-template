@@ -3,6 +3,7 @@
 import chalk from 'chalk'
 import inquirer from 'inquirer'
 import nanospinner from 'nanospinner'
+import figlet from 'figlet'
 
 const sleep = (delay = 1000) => new Promise(resolve => setTimeout(resolve, delay))
 const log = console.log
@@ -40,4 +41,15 @@ async function askFavColor() {
   return handleAnswer(color === 'Green')
 }
 
+async function winnerScreen() {
+  console.clear()
+
+  const msg = 'Congratulations!!!'
+
+  figlet(msg, (err, data) => {
+    log(chalk.greenBright(data))
+  })
+}
+
 await askFavColor()
+await winnerScreen()
