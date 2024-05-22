@@ -20,6 +20,18 @@ const handleAnswer = async (isCorrect = false) => {
   }
 }
 
+let playerName
+
+async function askName() {
+  const { name } = await inquirer.prompt({
+    name: 'name',
+    type: 'input',
+    message: chalk.cyan('Please type your name:'),
+  })
+
+  playerName = name
+}
+
 async function askFavColor() {
   const { color } = await inquirer.prompt([
     {
@@ -44,12 +56,14 @@ async function askFavColor() {
 async function winnerScreen() {
   console.clear()
 
-  const msg = 'Congratulations!!!'
+  const msg = `Congratulations!!!
+                  ${playerName}`
 
   figlet(msg, (err, data) => {
     log(chalk.greenBright(data))
   })
 }
 
+await askName()
 await askFavColor()
 await winnerScreen()
