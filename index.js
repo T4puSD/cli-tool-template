@@ -2,7 +2,7 @@ import chalk from 'chalk'
 import inquirer from 'inquirer'
 import nanospinner from 'nanospinner'
 import figlet from 'figlet'
-import { getUsername } from './lib/utils.js'
+import { getUsername } from './lib/osutils.js'
 
 const sleep = (delay = 1000) => new Promise(resolve => setTimeout(resolve, delay))
 const log = console.log
