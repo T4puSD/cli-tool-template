@@ -2,7 +2,7 @@ import chalk from 'chalk'
 import inquirer from 'inquirer'
 import nanospinner from 'nanospinner'
 import figlet from 'figlet'
-import os from 'os'
+import { getUsername } from './lib/utils.js'
 
 const sleep = (delay = 1000) => new Promise(resolve => setTimeout(resolve, delay))
 const log = console.log
@@ -26,7 +26,7 @@ async function askName() {
     name: 'name',
     type: 'input',
     message: chalk.cyan('Please type your name:'),
-    default: os.platform,
+    default: await getUsername(),
   })
 
   playerName = name
